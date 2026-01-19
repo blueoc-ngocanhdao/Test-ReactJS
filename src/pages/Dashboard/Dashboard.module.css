@@ -1,0 +1,144 @@
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+/* Stats Card */
+.card {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.cardIcon {
+  width: 50px;
+  height: 50px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cardInfo h4 {
+  margin: 0;
+  color: #7f8c8d;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.cardInfo p {
+  margin: 5px 0 0 0;
+  font-size: 22px;
+  font-weight: 700;
+  color: #2c3e50;
+}
+
+/* Sections Layout */
+.sections {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 25px;
+}
+
+.section {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.sectionHeader h3 {
+  margin: 0;
+  font-size: 18px;
+  color: #2c3e50;
+}
+
+.viewAll {
+  text-decoration: none;
+  color: #3498db;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* Table Style */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th {
+  text-align: left;
+  padding: 12px;
+  border-bottom: 2px solid #f4f7f6;
+  color: #95a5a6;
+  font-size: 13px;
+}
+
+.table td {
+  padding: 12px;
+  border-bottom: 1px solid #f4f7f6;
+  font-size: 14px;
+  color: #34495e;
+}
+
+/* Status Badges */
+.statusBadge {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.pending { background: #fef9e7; color: #f39c12; }
+.processing { background: #ebf5fb; color: #3498db; }
+.completed { background: #e9f7ef; color: #2ecc71; }
+.cancelled { background: #fdedec; color: #e74c3c; }
+
+.alertList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.alertItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  background: #fff5f5;
+  border-radius: 8px;
+  border: 1px solid #ffe3e3;
+}
+
+.alertText {
+  display: flex;
+  flex-direction: column;
+}
+
+.alertText span {
+  font-size: 14px;
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.alertText small {
+  color: #e74c3c;
+}

@@ -1,0 +1,432 @@
+/* --- 1. LAYOUT CHUNG --- */
+.productList {
+  background-color: #ffffff;
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  min-height: 500px;
+  color: #1f2937;
+}
+
+.listHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.listHeader h2 {
+  font-size: 24px;
+  margin: 0;
+  color: #111827;
+}
+
+/* --- 2. THANH CÔNG CỤ (TOOLBAR) --- */
+.toolbar {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+  align-items: center;
+  background: #f9fafb;
+  padding: 16px;
+  border-radius: 10px;
+  flex-wrap: wrap;
+}
+
+.searchBox {
+  display: flex;
+  gap: 8px;
+  flex: 1;
+  min-width: 250px;
+}
+
+.toolbar input,
+.toolbar select {
+  padding: 10px 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 14px;
+  background: white;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.toolbar input:focus,
+.toolbar select:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* --- 3. NÚT BẤM CHUNG (SHARED BUTTON LOGIC) --- */
+.addBtn,
+.toolbar button:not(.clearBtn),
+.submitBtn,
+.cancelBtn {
+  cursor: pointer;
+  font-weight: 600;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  border: none;
+  font-size: 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.addBtn,
+.toolbar button:not(.clearBtn) {
+  background-color: #10b981;
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+}
+
+.addBtn:hover {
+  background-color: #059669;
+  transform: translateY(-1px);
+}
+
+.clearBtn {
+  background: #6b7280;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.clearBtn:hover {
+  background: #4b5563;
+}
+
+/* --- 4. BẢNG DỮ LIỆU (TABLE) --- */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.table th {
+  background-color: #f3f4f6;
+  color: #4b5563;
+  font-weight: 600;
+  text-align: left;
+  padding: 14px 16px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.table td {
+  padding: 16px;
+  border-bottom: 1px solid #f3f4f6;
+  vertical-align: middle;
+}
+
+.table tr:hover {
+  background-color: #f9fafb;
+}
+
+.table img {
+  border-radius: 6px;
+  object-fit: cover;
+  border: 1px solid #e5e7eb;
+}
+
+/* --- 5. TRẠNG THÁI & BADGES --- */
+.badgeActive {
+  background: #d1fae5;
+  color: #065f46;
+  padding: 4px 10px;
+  border-radius: 99px;
+  font-size: 12px;
+}
+.badgeInactive {
+  background: #fee2e2;
+  color: #991b1b;
+  padding: 4px 10px;
+  border-radius: 99px;
+  font-size: 12px;
+}
+
+.stockRed {
+  color: #ef4444;
+  font-weight: 700;
+}
+.stockOrange {
+  color: #f59e0b;
+  font-weight: 700;
+}
+.stockGreen {
+  color: #10b981;
+  font-weight: 700;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+}
+.actions button {
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: 1px solid #d1d5db;
+  background: white;
+  font-size: 13px;
+}
+.actions button:hover {
+  background: #f3f4f6;
+}
+.deleteBtn {
+  color: #dc2626 !important;
+  border-color: #fecaca !important;
+}
+
+/* --- 6. PHÂN TRANG (PAGINATION) --- */
+.paginationContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.paginationButtons button {
+  padding: 8px 14px;
+  border: 1px solid #d1d5db;
+  background: white;
+  margin-left: 4px;
+}
+
+.activePage {
+  background: #3b82f6 !important;
+  color: white !important;
+  border-color: #3b82f6 !important;
+}
+
+/* --- 7. CHI TIẾT SẢN PHẨM (DETAIL) --- */
+.detailWrapper {
+  background: white;
+  padding: 32px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.detailHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+  border-bottom: 1px solid #f3f4f6;
+  padding-bottom: 20px;
+}
+
+/* Nút Back */
+.backBtn {
+  background: #f3f4f6;
+  color: #4b5563;
+  border: 1px solid #d1d5db;
+  padding: 10px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+.backBtn:hover {
+  background: #e5e7eb;
+}
+
+.detailActions {
+  display: flex;
+  gap: 12px;
+}
+
+/* Nút Edit trong Detail */
+.editBtn {
+  background: #3b82f6; /* Màu xanh dương */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+}
+.editBtn:hover {
+  background: #2563eb;
+}
+
+/* Nút Delete trong Detail */
+.deleteBtn {
+  background: #fee2e2;
+  color: #dc2626;
+  border: 1px solid #fecaca;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+}
+.deleteBtn:hover {
+  background: #fecaca;
+}
+
+.detailContent {
+  display: flex;
+  gap: 48px;
+  align-items: flex-start;
+}
+
+.imageContainer {
+  flex: 0 0 400px;
+}
+
+.largeImg {
+  width: 100%;
+  height: 400px;
+  border-radius: 16px;
+  object-fit: cover;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.info {
+  flex: 1;
+}
+
+.info h1 {
+  margin: 12px 0;
+  font-size: 36px;
+  color: #111827;
+}
+
+.desc {
+  font-size: 18px;
+  color: #6b7280;
+  line-height: 1.6;
+  margin-bottom: 32px;
+}
+
+.gridInfo {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  background: #f9fafb;
+  padding: 24px;
+  border-radius: 16px;
+}
+
+.infoItem span {
+  display: block;
+  font-size: 13px;
+  text-transform: uppercase;
+  color: #9ca3af;
+  letter-spacing: 0.05em;
+  margin-bottom: 4px;
+}
+
+.infoItem strong {
+  font-size: 20px;
+  color: #1f2937;
+}
+
+/* --- 8. FORM (CREATE/EDIT) --- */
+.formCard {
+  max-width: 800px;
+  margin: 0 auto;
+  background: white;
+  padding: 32px;
+  border-radius: 12px;
+}
+
+.mainForm {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Description chiếm trọn hàng 2 */
+.field:nth-child(2) {
+  grid-column: span 2;
+}
+
+.field label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.field input,
+.field textarea,
+.field select {
+  padding: 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 15px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.field textarea {
+  min-height: 120px;
+}
+
+/* Wrapper cho các nút trong form */
+.formBtns {
+  display: flex;
+  gap: 12px;
+  margin-top: 10px;
+  border-top: 1px solid #e5e7eb;
+  padding-top: 24px;
+  grid-column: span 2; /* Chiếm hết hàng cuối */
+}
+
+/* Nút Submit (Xanh lá) */
+.submitBtn {
+  background-color: #10b981;
+  color: white;
+  padding: 12px 32px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.submitBtn:hover {
+  background-color: #059669;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.submitBtn:disabled {
+  background-color: #9ca3af;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Nút Cancel (Trắng/Xám) */
+.cancelBtn {
+  background-color: white;
+  color: #4b5563;
+  padding: 12px 32px;
+  border: 1px solid #d1d5db !important;
+}
+
+.cancelBtn:hover {
+  background-color: #f9fafb;
+  border-color: #9ca3af !important;
+}
+
+.spinner {
+  text-align: center;
+  padding: 40px;
+  color: #6b7280;
+}
+
+.searchingText {
+    font-size: 12px;
+    color: #3b82f6;
+    font-style: italic;
+    align-self: center;
+}
