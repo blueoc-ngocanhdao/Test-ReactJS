@@ -17,13 +17,10 @@ const ProductList = () => {
 
   // LOGIC TÌM KIẾM DEBOUNCE (TRỄ 1 GIÂY)
   useEffect(() => {
-    // Mỗi khi user gõ, tạo một timer chờ 1000ms
     const delayDebounceFn = setTimeout(() => {
       setSearch(searchInput);
-      setPage(1); // Reset về trang 1 khi tìm kiếm mới
+      setPage(1); 
     }, 1000);
-
-    // Nếu user gõ phím tiếp theo trước khi hết 1s, xóa timer cũ đi và tạo lại cái mới
     return () => clearTimeout(delayDebounceFn);
   }, [searchInput]);
 
@@ -31,15 +28,21 @@ const ProductList = () => {
     const params = {
       _page: page,
       _limit: 10,
-      // name_like giúp tìm chính xác trong cột Name và không phân biệt hoa thường
-      ...(search && { name_like: search }),
+      ...(search && { q: search }),
       ...(status !== "All" && { status }),
     };
 
-    console.log("Gửi lên Server params:", params);
-
     const result = await getProducts(params);
-    setProducts(result.data);
+
+    // Lọc thêm tại client để đảm bảo chính xác tuyệt đối
+    let filteredData = result.data;
+    if (search) {
+      filteredData = filteredData.filter((p) =>
+        p.name.toLowerCase().includes(search.toLowerCase()),
+      );
+    }
+
+    setProducts(filteredData);
     setTotal(result.total);
   };
 
@@ -81,13 +84,11 @@ const ProductList = () => {
 
       <div className={styles.toolbar}>
         <div className={styles.searchBox}>
-          {/* Input không cần nút bấm nữa vì đã tự động tìm kiếm */}
           <input
             value={searchInput}
             placeholder="Type to search ..."
             onChange={(e) => setSearchInput(e.target.value)}
           />
-          {/* Hiển thị trạng thái đang chờ tìm kiếm nếu muốn */}
           {searchInput !== search && (
             <span className={styles.searchingText}>Searching...</span>
           )}
@@ -117,7 +118,7 @@ const ProductList = () => {
               <th>Price</th>
               <th>Stock</th>
               <th>Status</th>
-              <th>Actions</th>
+              <th className={styles.actionHeader}>Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -134,29 +135,18 @@ const ProductList = () => {
                 <td>${Number(p.price).toFixed(2)}</td>
                 <td className={getStockClass(p.stock)}>{p.stock}</td>
                 <td>
-                  <span
-                    className={
-                      p.status === "Active"
-                        ? styles.badgeActive
-                        : styles.badgeInactive
-                    }
-                  >
+                  <span className={p.status === "Active" ? styles.badgeActive : styles.badgeInactive}>
                     {p.status}
                   </span>
                 </td>
-                <td className={styles.actions}>
-                  <button onClick={() => navigate(`/products/${p.id}`)}>
-                    View
-                  </button>
-                  <button onClick={() => navigate(`/products/${p.id}/edit`)}>
-                    Edit
-                  </button>
-                  <button
-                    onClick={() => handleDelete(p.id)}
-                    className={styles.deleteBtn}
-                  >
-                    Delete
-                  </button>
+                <td className={styles.actionCell}> {/* Thêm class này */}
+                  <div className={styles.actions}>
+                    <button onClick={() => navigate(`/products/${p.id}`)}>View</button>
+                    <button onClick={() => navigate(`/products/${p.id}/edit`)}>Edit</button>
+                    <button onClick={() => handleDelete(p.id)} className={styles.deleteBtn}>
+                      Delete
+                    </button>
+                  </div>
                 </td>
               </tr>
             ))}
@@ -164,12 +154,7 @@ const ProductList = () => {
         </table>
       )}
 
-      <Pagination
-        total={total}
-        limit={10}
-        currentPage={page}
-        onPageChange={setPage}
-      />
+      <Pagination total={total} limit={10} currentPage={page} onPageChange={setPage} />
     </div>
   );
 };

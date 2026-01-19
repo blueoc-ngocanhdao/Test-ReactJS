@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+ import React, { useState, useEffect } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import axiosClient from "../../api/axiosClient";
 import styles from "./Products.module.css";
@@ -38,7 +38,6 @@ const ProductDetail = () => {
   return (
     <div className={styles.detailWrapper}>
       <div className={styles.detailHeader}>
-        {/* Thêm class backBtn */}
         <button
           className={styles.backBtn}
           onClick={() => navigate("/products")}
@@ -46,7 +45,6 @@ const ProductDetail = () => {
           &larr; Back to List
         </button>
         <div className={styles.detailActions}>
-          {/* Thêm class editBtn */}
           <button
             className={styles.editBtn}
             onClick={() => navigate(`/products/${id}/edit`)}
@@ -98,7 +96,7 @@ const ProductDetail = () => {
             </div>
             <div className={styles.infoItem}>
               <span>Category</span>
-              <strong>Electronics</strong> {/* Ví dụ */}
+              <strong>Electronics</strong> 
             </div>
             <div className={styles.infoItem}>
               <span>Created Date</span>

@@ -57,7 +57,7 @@
   box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
 }
 
-/* --- 3. NÚT BẤM CHUNG (SHARED BUTTON LOGIC) --- */
+/* --- 3. NÚT BẤM CHUNG --- */
 .addBtn,
 .toolbar button:not(.clearBtn),
 .submitBtn,
@@ -93,14 +93,9 @@
   border-radius: 8px;
   border: none;
   cursor: pointer;
-  transition: background 0.2s;
 }
 
-.clearBtn:hover {
-  background: #4b5563;
-}
-
-/* --- 4. BẢNG DỮ LIỆU (TABLE) --- */
+/* --- 4. BẢNG DỮ LIỆU (FIX LỖI GÃY HÀNG) --- */
 .table {
   width: 100%;
   border-collapse: collapse;
@@ -111,17 +106,28 @@
   background-color: #f3f4f6;
   color: #4b5563;
   font-weight: 600;
-  text-align: left;
   padding: 14px 16px;
   font-size: 12px;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  text-align: left;
+}
+
+/* Tiêu đề Actions */
+.actionHeader {
+  text-align: center !important;
 }
 
 .table td {
   padding: 16px;
   border-bottom: 1px solid #f3f4f6;
   vertical-align: middle;
+}
+
+/* Ô dữ liệu Actions */
+.actionCell {
+  text-align: center;
+  width: 280px; /* Khóa chiều rộng cột Actions */
+  min-width: 280px;
 }
 
 .table tr:hover {
@@ -136,50 +142,54 @@
 
 /* --- 5. TRẠNG THÁI & BADGES --- */
 .badgeActive {
-  background: #d1fae5;
-  color: #065f46;
-  padding: 4px 10px;
-  border-radius: 99px;
-  font-size: 12px;
+  background: #d1fae5; color: #065f46;
+  padding: 4px 10px; border-radius: 99px; font-size: 12px;
 }
 .badgeInactive {
-  background: #fee2e2;
-  color: #991b1b;
-  padding: 4px 10px;
-  border-radius: 99px;
-  font-size: 12px;
+  background: #fee2e2; color: #991b1b;
+  padding: 4px 10px; border-radius: 99px; font-size: 12px;
 }
 
-.stockRed {
-  color: #ef4444;
-  font-weight: 700;
-}
-.stockOrange {
-  color: #f59e0b;
-  font-weight: 700;
-}
-.stockGreen {
-  color: #10b981;
-  font-weight: 700;
-}
+.stockRed { color: #ef4444; font-weight: 700; }
+.stockOrange { color: #f59e0b; font-weight: 700; }
+.stockGreen { color: #10b981; font-weight: 700; }
 
+/* FIX LỖI NÚT ACTIONS BỊ GÃY */
 .actions {
   display: flex;
-  gap: 8px;
+  gap: 10px;            /* Khoảng cách giữa các nút */
+  justify-content: center;
+  align-items: center;
 }
+
 .actions button {
-  padding: 6px 12px;
+  padding: 8px 0;
   border-radius: 6px;
   border: 1px solid #d1d5db;
   background: white;
   font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s;
+  
+  /* Cố định chiều rộng nút để không bị lệch hàng dọc */
+  min-width: 75px; 
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 500;
 }
+
 .actions button:hover {
   background: #f3f4f6;
+  border-color: #9ca3af;
 }
+
 .deleteBtn {
   color: #dc2626 !important;
   border-color: #fecaca !important;
+}
+.deleteBtn:hover {
+  background: #fee2e2 !important;
 }
 
 /* --- 6. PHÂN TRANG (PAGINATION) --- */
@@ -197,6 +207,8 @@
   border: 1px solid #d1d5db;
   background: white;
   margin-left: 4px;
+  border-radius: 6px;
+  cursor: pointer;
 }
 
 .activePage {
@@ -348,21 +360,11 @@
   flex-direction: column;
   gap: 8px;
 }
+.field:nth-child(2) { grid-column: span 2; }
 
-/* Description chiếm trọn hàng 2 */
-.field:nth-child(2) {
-  grid-column: span 2;
-}
+.field label { font-size: 14px; font-weight: 600; color: #374151; }
 
-.field label {
-  font-size: 14px;
-  font-weight: 600;
-  color: #374151;
-}
-
-.field input,
-.field textarea,
-.field select {
+.field input, .field textarea, .field select {
   padding: 12px;
   border: 1px solid #d1d5db;
   border-radius: 8px;
@@ -371,41 +373,21 @@
   box-sizing: border-box;
 }
 
-.field textarea {
-  min-height: 120px;
-}
-
-/* Wrapper cho các nút trong form */
 .formBtns {
   display: flex;
   gap: 12px;
   margin-top: 10px;
   border-top: 1px solid #e5e7eb;
   padding-top: 24px;
-  grid-column: span 2; /* Chiếm hết hàng cuối */
+  grid-column: span 2;
 }
 
-/* Nút Submit (Xanh lá) */
 .submitBtn {
   background-color: #10b981;
   color: white;
   padding: 12px 32px;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
-.submitBtn:hover {
-  background-color: #059669;
-  transform: translateY(-1px);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.submitBtn:disabled {
-  background-color: #9ca3af;
-  cursor: not-allowed;
-  transform: none;
-}
-
-/* Nút Cancel (Trắng/Xám) */
 .cancelBtn {
   background-color: white;
   color: #4b5563;
@@ -413,20 +395,16 @@
   border: 1px solid #d1d5db !important;
 }
 
-.cancelBtn:hover {
-  background-color: #f9fafb;
-  border-color: #9ca3af !important;
+/* --- PHỤ TRỢ --- */
+.searchingText {
+    font-size: 12px;
+    color: #3b82f6;
+    font-style: italic;
+    align-self: center;
 }
 
 .spinner {
   text-align: center;
   padding: 40px;
   color: #6b7280;
-}
-
-.searchingText {
-    font-size: 12px;
-    color: #3b82f6;
-    font-style: italic;
-    align-self: center;
 }

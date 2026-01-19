@@ -9,6 +9,7 @@ import ProductDetail from './pages/Products/ProductDetail';
 import ProductForm from './pages/Products/ProductForm';
 import OrderList from './pages/Orders/OrderList';
 import OrderDetail from './pages/Orders/OrderDetail';
+import NotFound from './pages/NotFound/NotFound.jsx';
 
 function App() {
   return (
@@ -25,7 +26,7 @@ function App() {
             <Route path="orders" element={<OrderList />} />
             <Route path="orders/:id" element={<OrderDetail />} />
           </Route>
-          <Route path="*" element={<div>404 - Not Found</div>} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
     </AuthProvider>
